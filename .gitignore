@@ -3,3 +3,4 @@ Sandbox/*
 .idea
 tests/__pycache__
 ParlisCrawler/__pycache__
+config.ini
