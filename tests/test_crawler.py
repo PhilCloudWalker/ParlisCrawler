@@ -2,6 +2,12 @@ import pytest, datetime
 from ParlisCrawler.Website import Website
 from ParlisCrawler.Crawler import CrawlerArticle, CrawlerOverview
 
+# --- Init -----------------------------#
+
+@pytest.fixture(scope="module")
+def db(module):
+    pass
+
 # ---------- Overview ------------------#
 def test_content_generator():
     url = r'https://www.stvv.frankfurt.de/PARLISLINK/SDF?VORLAGEART=&NUMMER=&JAHR=2019&GREMIUM=&FRAKTION=&DOKUMENTTYP=VORL&FORMFL_OB=SORTFELD&FORM_SO=Absteigend&FORM_C=und'
@@ -30,7 +36,6 @@ def test_content_components():
     assert (example.link == 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?VORLAGEART=&NUMMER=&JAHR=2017&GREMIUM=&FRAKTION=&DOKUMENTTYP=VORL&FORMFL_OB=SORTFELD&FORM_SO=Absteigend&FORM_C=und&?9749?1?')
 
 # ------- Article -------------------------#
-
 def test_article_components_1():
 
     link = 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?VORLAGEART=ST&NUMMER=479&JAHR=2019&GREMIUM=&FRAKTION=&DOKUMENTTYP=VORL&FORMFL_OB=SORTFELD&FORM_SO=Absteigend&FORM_C=und&?1?1?'
@@ -43,8 +48,8 @@ def test_article_components_1():
     assert (article.id == 'ST 479')
     assert (article.committee == 'Ortsbeirat 1')
     assert (article.date == datetime.datetime(2019, 2, 22, 0, 0))
-    assert (article.co_id == 'OM 4005')
-    assert (article.co_link == 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?W=DOK_NAME=%27OM_4005_2018%27')
+    assert (article.co_id == r'OF 1038/1')
+    assert (article.co_link == 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?W=DOK_NAME=%27OF_1038-1_2019%27')
     assert (article.city_area == 'Bockenheim;Europaviertel')
 
 def test_article_components_2():
