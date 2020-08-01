@@ -4,3 +4,4 @@ Sandbox/*
 tests/__pycache__
 ParlisCrawler/__pycache__
 config.ini
+.DS_Store
