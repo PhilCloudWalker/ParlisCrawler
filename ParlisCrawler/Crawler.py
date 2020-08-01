@@ -1,3 +1,8 @@
+'''
+Created on 19.02.2019
+@author: Philipp
+'''
+
 import requests, time
 from bs4 import  BeautifulSoup
 from urllib.parse import urljoin

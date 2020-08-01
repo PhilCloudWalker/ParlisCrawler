@@ -1,6 +1,5 @@
 '''
 Created on 19.02.2019
-
 @author: Philipp
 '''
 

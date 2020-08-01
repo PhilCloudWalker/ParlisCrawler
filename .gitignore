@@ -1,7 +1,5 @@
-*.py[co]
-*.csv
-*.xml
-*~
-*-IDlist.txt
-*-antraege.csv
+.pytest_cache/*
 Sandbox/*
+.idea
+tests/__pycache__
+ParlisCrawler/__pycache__
