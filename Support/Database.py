@@ -1,11 +1,10 @@
 from configparser import ConfigParser
 from azure.cosmos import CosmosClient, PartitionKey, exceptions
-import json, logging
+import json, logging, os
 
 # get Database Secrets
-file = "../config.ini"
 config = ConfigParser()
-config.read(file)
+config.read(os.path.join(os.path.dirname(__file__), '../config.ini'))
 
 # logger
 logger = logging.getLogger(__name__)
