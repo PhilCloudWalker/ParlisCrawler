@@ -9,7 +9,3 @@ Besides that the usability of the system is - politely expressed - not very opti
 # Dependencies
 * BeautifulSoup - http://pypi.python.org/pypi/BeautifulSoup/
 
-
-# ToDos
-- Logging
-- Datenbank anbindung
