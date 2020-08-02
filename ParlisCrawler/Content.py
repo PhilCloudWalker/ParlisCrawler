@@ -84,9 +84,9 @@ class ContentArticle():
     def date(self, date):
         #check whether input is already a timestamp
         if type(date) == datetime:
-            self._date = date
+            self._date = date.strftime("%Y-%m-%d")
         elif type(date) == str:
-            self._date = datetime.strptime(date, '%d.%m.%Y')
+            self._date = datetime.strptime(date, '%d.%m.%Y').strftime("%Y-%m-%d")
         else:
             raise ValueError('date {} does not match format \'%d.%m.%Y\''.format(date))
 
