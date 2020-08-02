@@ -1,5 +1,5 @@
-.pytest_cache/*
-Sandbox/*
+.pytest_cache
+Sandbox
 .idea
 tests/__pycache__
 ParlisCrawler/__pycache__
