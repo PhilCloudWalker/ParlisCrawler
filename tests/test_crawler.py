@@ -2,11 +2,6 @@ import pytest, datetime
 from ParlisCrawler.Website import Website
 from ParlisCrawler.Crawler import CrawlerArticle, CrawlerOverview
 
-# --- Init -----------------------------#
-
-@pytest.fixture(scope="module")
-def db(module):
-    pass
 
 # ---------- Overview ------------------#
 def test_content_generator():
@@ -47,7 +42,7 @@ def test_article_components_1():
     assert (article.doc_type == 'Vorlage')
     assert (article.id == 'ST 479')
     assert (article.committee == 'Ortsbeirat 1')
-    assert (article.date == datetime.datetime(2019, 2, 22, 0, 0))
+    assert (article.date == "2019-02-22")
     assert (article.co_id == r'OF 1038/1')
     assert (article.co_link == 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?W=DOK_NAME=%27OF_1038-1_2019%27')
     assert (article.city_area == 'Bockenheim;Europaviertel')
@@ -63,7 +58,7 @@ def test_article_components_2():
     assert (article.doc_type == 'Vorlage')
     assert (article.id == 'E 5')
     assert (article.committee == None)
-    assert (article.date == datetime.datetime(2017, 4, 26, 0, 0))
+    assert (article.date == "2017-04-26")
     assert (article.city_area == None)
     assert (article.party == 'CDU, SPD, GRÜNE')
 

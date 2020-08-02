@@ -9,6 +9,7 @@ from urllib.parse import urljoin
 import datetime
 
 from ParlisCrawler.Content import ContentOverview, ContentArticle
+from Support.Database import Database
 from unicodedata import normalize
 import re
 
@@ -219,7 +220,7 @@ if __name__ == '__main__':
     link3 = 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?VORLAGEART=&NUMMER=&JAHR=2017&GREMIUM=&FRAKTION=&DOKUMENTTYP=VORL&FORMFL_OB=SORTFELD&FORM_SO=Absteigend&FORM_C=und&?9749?7?'
 
     print(link)
-    article_page = Website(link2, None)
+    article_page = Website(link3, None)
     crawler_art = CrawlerArticle()
     article = crawler_art.parse(article_page)
     print('Dokumentart: {}'.format(article.doc_type))
@@ -228,6 +229,13 @@ if __name__ == '__main__':
     print('Date: {}'.format(article.date))
     print('-'*10, '\n', article.text, '\n', '-'*10)
     print('Vorlage: {}'.format(article.co_id))
+
+    #---- Save to database
+    db = Database()
+    db.connect()
+    #db.create_container("Articles", "Crawler")
+    db.insert_article(article, "Crawler", "Articles")
+    item = db.query_id("Crawler", "Articles", article.id)
 
     #---------- anders ----------------------#
     link2 = 'https://www.stvv.frankfurt.de/PARLISLINK/DDW?VORLAGEART=&NUMMER=&JAHR=2017&GREMIUM=&FRAKTION=&DOKUMENTTYP=VORL&FORMFL_OB=SORTFELD&FORM_SO=Absteigend&FORM_C=und&?9749?9745?'
