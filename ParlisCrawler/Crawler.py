@@ -11,7 +11,15 @@ import datetime
 from ParlisCrawler.Content import ContentOverview, ContentArticle
 from Support.Database import Database
 from unicodedata import normalize
-import re
+import re, logging
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+logger.addHandler(stream_handler)
 
 class Crawler:
 
@@ -23,6 +31,7 @@ class Crawler:
         '''
         try:
             req = requests.get(url)
+            logger.info(f"Requested page: {url}")
         except requests.exceptions.RequestException:
             return None
         return BeautifulSoup(req.text, 'html.parser')
@@ -153,6 +162,7 @@ class CrawlerArticle(Crawler):
                 article_dict['co_link'] = urljoin(r'https://www.stvv.frankfurt.de/', element.attrs['href'])
                 article_dict['co_id'] =  self._text_corrector( element.text )
 
+        logger.info(f"Article parsed: {website.url}")
         return ContentArticle(**article_dict)
 
     def _header_selection(self, element):
