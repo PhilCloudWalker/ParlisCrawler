@@ -13,7 +13,7 @@ from datetime import datetime
 
 class ContentOverview():
     '''
-
+    Result Object. Return overview of articles
     '''
     def __init__(self, title, link, date = '1900-01-01', district = None):
         self.title = title
@@ -54,7 +54,7 @@ class ContentOverview():
 
 class ContentArticle():
     '''
-
+    Result Object. Structures Articles
     '''
 
     def __init__(self, doc_type, id, date, text,

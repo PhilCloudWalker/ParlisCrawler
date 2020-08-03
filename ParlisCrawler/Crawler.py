@@ -22,6 +22,9 @@ stream_handler.setFormatter(formatter)
 logger.addHandler(stream_handler)
 
 class Crawler:
+    '''
+    Base Class. Define main structure
+    '''
 
     def getPage(self, url):
         '''
@@ -38,12 +41,7 @@ class Crawler:
 
     def getTag(self, bsObj, selector):
         '''
-        Utility function used to get a content string from a
-​    ​    Beautiful Soup object and a selector. Returns an empty
-​    ​    string if no object is found for the given selector
-        :param bsObj:
-        :param selector:
-        :return:
+        Deprecated
         '''
 
         selectedItems = bsObj.find_all(selector)
@@ -201,6 +199,8 @@ class CrawlerArticle(Crawler):
         return {category:text}
 
     def _head_cat_string_adjust(self, text):
+        #replace : and space by ''
+        # https://docs.python.org/3/library/re.html
         return re.sub( '[: ]', '', self._text_corrector(text).lower() )
 
 
